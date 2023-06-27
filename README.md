@@ -15,7 +15,7 @@ git clone <HTTPS or SSH>
 ```
 
 ```
-cd hw05_final
+cd app_TODO_list
 ```
 
 2. Установите и активируйте виртуальное окружение
