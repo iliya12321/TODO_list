@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+  <main> 
+    <div class="container py-5"> 
+      <h1>Task List</h1>
+      <a href="{% url 'tasks:task_create' %}">Add new task</a>
+      <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Filter</button>
+      </form>
+      {% for task in tasks %}
+        <li>
+          {{ task.description }}
+        </li>
+        <li>
+          {{ task.status }}
+        </li>
+        <li> 
+          Дата публикации: {{ task.created|date:"d E Y" }} 
+        </li>
+        <li>
+          <a href="{% url 'tasks:task_update' task.pk %}">Edit</a>
+        </li>
+        <li>
+          <a href="{% url 'tasks:task_delete' task.pk %}">Delete</a>
+        </li>
+        {% if not forloop.last %}<hr>{% endif %} 
+        {% empty %}
+        <li>Пока что нет заданий.</li>
+      {% endfor %}
+    </div> 
+  </main> 
+{% endblock %}
